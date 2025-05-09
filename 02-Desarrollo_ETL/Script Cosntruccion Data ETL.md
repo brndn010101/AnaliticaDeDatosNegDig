@@ -1,3 +1,4 @@
+```sql
 -- Crear la base de datos de Stage_Northwind
 
 CREATE DATABASE stage_northwind
@@ -140,3 +141,4 @@ CREATE TABLE fact_Ventas(
 	FOREIGN KEY (tiempo_SKey)
 	REFERENCES dim_Tiempo(tiempo_SKey)
 	)
+	```
