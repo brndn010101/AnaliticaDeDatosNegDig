@@ -10,4 +10,4 @@ Se pueden encontrar temas como:
 1. Fundamentos de Python
 1. Visualización
 
-[Analítica de Datos](./img/Python.jpg)
+![Analítica de Datos](./img/Python.jpg)
