@@ -1,0 +1,1939 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/27/2025 3:37:18 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="BRANDON"
+  DTS:CreatorName="BRANDON\BRNDN"
+  DTS:DTSID="{4A31CB5C-E910-45E3-B946-163160571335}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5685.0"
+  DTS:LocaleID="2058"
+  DTS:ObjectName="01-Datamart_dimcliente"
+  DTS:PackageType="5"
+  DTS:VersionBuild="7"
+  DTS:VersionGUID="{93C94504-7992-4F47-A578-AAE0952FFCAF}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[BRANDON.datamart_northwind]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{53D38DFA-C170-47DE-AC81-31119DE86EB1}"
+      DTS:ObjectName="BRANDON.datamart_northwind">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=BRANDON;Initial Catalog=datamart_northwind;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Application Name=SSIS-01-Datamart_dimcliente-{53D38DFA-C170-47DE-AC81-31119DE86EB1}BRANDON.datamart_northwind;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[BRANDON.datamart_northwind 1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{A74B514E-A137-47A5-89DD-B34D6E6D04B0}"
+      DTS:ObjectName="BRANDON.datamart_northwind 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=BRANDON;Initial Catalog=datamart_northwind;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Application Name=SSIS-01-Datamart_dimcliente-{A74B514E-A137-47A5-89DD-B34D6E6D04B0}BRANDON.datamart_northwind 1;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[BRANDON.stage_northwind]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{0CE86101-210E-4E08-ADA5-5CB34415218A}"
+      DTS:ObjectName="BRANDON.stage_northwind">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=BRANDON;Initial Catalog=stage_northwind;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Application Name=SSIS-01-Datamart_dimcliente-{0CE86101-210E-4E08-ADA5-5CB34415218A}BRANDON.stage_northwind;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Carga dim_cliente"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Tarea Flujo de datos"
+      DTS:DTSID="{58C644D6-54A2-4467-8370-A68634B305F7}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Carga dim_cliente"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Carga dim_cliente\Conversión de datos 1"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Conversión de datos;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;0"
+              description="Conversión de datos"
+              name="Conversión de datos 1"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Carga dim_cliente\Conversión de datos 1.Inputs[Entrada de conversión de datos]"
+                  name="Entrada de conversión de datos">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Carga dim_cliente\Conversión de datos 1.Inputs[Entrada de conversión de datos].Columns[pais]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="pais"
+                      lineageId="Package\Carga dim_cliente\Stage_Cliente.Outputs[Salida de origen de OLE DB].Columns[pais]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Carga dim_cliente\Conversión de datos 1.Outputs[Salida de conversión de datos]"
+                  exclusionGroup="1"
+                  name="Salida de conversión de datos"
+                  synchronousInputId="Package\Carga dim_cliente\Conversión de datos 1.Inputs[Entrada de conversión de datos]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga dim_cliente\Conversión de datos 1.Outputs[Salida de conversión de datos].Columns[Copy of pais]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      length="15"
+                      lineageId="Package\Carga dim_cliente\Conversión de datos 1.Outputs[Salida de conversión de datos].Columns[Copy of pais]"
+                      name="Copy of pais"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Especifica la columna de entrada usada como origen de datos para la conversión."
+                          name="SourceInputColumnLineageID">#{Package\Carga dim_cliente\Stage_Cliente.Outputs[Salida de origen de OLE DB].Columns[pais]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indica si la columna usa las rutinas de análisis más rápidas independientes de la configuración regional."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Carga dim_cliente\Conversión de datos 1.Outputs[Salida de error de conversión de datos]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de conversión de datos"
+                  synchronousInputId="Package\Carga dim_cliente\Conversión de datos 1.Inputs[Entrada de conversión de datos]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga dim_cliente\Conversión de datos 1.Outputs[Salida de error de conversión de datos].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carga dim_cliente\Conversión de datos 1.Outputs[Salida de error de conversión de datos].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carga dim_cliente\Conversión de datos 1.Outputs[Salida de error de conversión de datos].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carga dim_cliente\Conversión de datos 1.Outputs[Salida de error de conversión de datos].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carga dim_cliente\Dim_Cliente"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="Origen de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;7"
+              description="Origen de OLE DB"
+              name="Dim_Cliente"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">[dbo].[dim_Cliente]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="Variable que contiene el comando SQL para ejecutar."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="Asignaciones entre los parámetros del comando SQL y las variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Carga dim_cliente\Dim_Cliente.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[BRANDON.datamart_northwind 1]"
+                  connectionManagerRefId="Package.ConnectionManagers[BRANDON.datamart_northwind 1]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Carga dim_cliente\Dim_Cliente.Outputs[Salida de origen de OLE DB]"
+                  name="Salida de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga dim_cliente\Dim_Cliente.Outputs[Salida de origen de OLE DB].Columns[cliente_Skey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga dim_cliente\Dim_Cliente.Outputs[Salida de origen de OLE DB].ExternalColumns[cliente_Skey]"
+                      lineageId="Package\Carga dim_cliente\Dim_Cliente.Outputs[Salida de origen de OLE DB].Columns[cliente_Skey]"
+                      name="cliente_Skey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga dim_cliente\Dim_Cliente.Outputs[Salida de origen de OLE DB].Columns[cliente_codigoBKey]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga dim_cliente\Dim_Cliente.Outputs[Salida de origen de OLE DB].ExternalColumns[cliente_codigoBKey]"
+                      length="5"
+                      lineageId="Package\Carga dim_cliente\Dim_Cliente.Outputs[Salida de origen de OLE DB].Columns[cliente_codigoBKey]"
+                      name="cliente_codigoBKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga dim_cliente\Dim_Cliente.Outputs[Salida de origen de OLE DB].Columns[cliente_compania]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga dim_cliente\Dim_Cliente.Outputs[Salida de origen de OLE DB].ExternalColumns[cliente_compania]"
+                      length="40"
+                      lineageId="Package\Carga dim_cliente\Dim_Cliente.Outputs[Salida de origen de OLE DB].Columns[cliente_compania]"
+                      name="cliente_compania"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga dim_cliente\Dim_Cliente.Outputs[Salida de origen de OLE DB].Columns[cliente_ciudad]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga dim_cliente\Dim_Cliente.Outputs[Salida de origen de OLE DB].ExternalColumns[cliente_ciudad]"
+                      length="15"
+                      lineageId="Package\Carga dim_cliente\Dim_Cliente.Outputs[Salida de origen de OLE DB].Columns[cliente_ciudad]"
+                      name="cliente_ciudad"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga dim_cliente\Dim_Cliente.Outputs[Salida de origen de OLE DB].Columns[cliente_region]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga dim_cliente\Dim_Cliente.Outputs[Salida de origen de OLE DB].ExternalColumns[cliente_region]"
+                      length="25"
+                      lineageId="Package\Carga dim_cliente\Dim_Cliente.Outputs[Salida de origen de OLE DB].Columns[cliente_region]"
+                      name="cliente_region"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga dim_cliente\Dim_Cliente.Outputs[Salida de origen de OLE DB].Columns[cliente_pais]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga dim_cliente\Dim_Cliente.Outputs[Salida de origen de OLE DB].ExternalColumns[cliente_pais]"
+                      length="15"
+                      lineageId="Package\Carga dim_cliente\Dim_Cliente.Outputs[Salida de origen de OLE DB].Columns[cliente_pais]"
+                      name="cliente_pais"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Carga dim_cliente\Dim_Cliente.Outputs[Salida de origen de OLE DB].ExternalColumns[cliente_Skey]"
+                      dataType="i4"
+                      name="cliente_Skey" />
+                    <externalMetadataColumn
+                      refId="Package\Carga dim_cliente\Dim_Cliente.Outputs[Salida de origen de OLE DB].ExternalColumns[cliente_codigoBKey]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      name="cliente_codigoBKey" />
+                    <externalMetadataColumn
+                      refId="Package\Carga dim_cliente\Dim_Cliente.Outputs[Salida de origen de OLE DB].ExternalColumns[cliente_compania]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      name="cliente_compania" />
+                    <externalMetadataColumn
+                      refId="Package\Carga dim_cliente\Dim_Cliente.Outputs[Salida de origen de OLE DB].ExternalColumns[cliente_ciudad]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      name="cliente_ciudad" />
+                    <externalMetadataColumn
+                      refId="Package\Carga dim_cliente\Dim_Cliente.Outputs[Salida de origen de OLE DB].ExternalColumns[cliente_region]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      name="cliente_region" />
+                    <externalMetadataColumn
+                      refId="Package\Carga dim_cliente\Dim_Cliente.Outputs[Salida de origen de OLE DB].ExternalColumns[cliente_pais]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      name="cliente_pais" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Carga dim_cliente\Dim_Cliente.Outputs[Salida de error de origen de OLE DB]"
+                  isErrorOut="true"
+                  name="Salida de error de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga dim_cliente\Dim_Cliente.Outputs[Salida de error de origen de OLE DB].Columns[cliente_Skey]"
+                      dataType="i4"
+                      lineageId="Package\Carga dim_cliente\Dim_Cliente.Outputs[Salida de error de origen de OLE DB].Columns[cliente_Skey]"
+                      name="cliente_Skey" />
+                    <outputColumn
+                      refId="Package\Carga dim_cliente\Dim_Cliente.Outputs[Salida de error de origen de OLE DB].Columns[cliente_codigoBKey]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      lineageId="Package\Carga dim_cliente\Dim_Cliente.Outputs[Salida de error de origen de OLE DB].Columns[cliente_codigoBKey]"
+                      name="cliente_codigoBKey" />
+                    <outputColumn
+                      refId="Package\Carga dim_cliente\Dim_Cliente.Outputs[Salida de error de origen de OLE DB].Columns[cliente_compania]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      lineageId="Package\Carga dim_cliente\Dim_Cliente.Outputs[Salida de error de origen de OLE DB].Columns[cliente_compania]"
+                      name="cliente_compania" />
+                    <outputColumn
+                      refId="Package\Carga dim_cliente\Dim_Cliente.Outputs[Salida de error de origen de OLE DB].Columns[cliente_ciudad]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      lineageId="Package\Carga dim_cliente\Dim_Cliente.Outputs[Salida de error de origen de OLE DB].Columns[cliente_ciudad]"
+                      name="cliente_ciudad" />
+                    <outputColumn
+                      refId="Package\Carga dim_cliente\Dim_Cliente.Outputs[Salida de error de origen de OLE DB].Columns[cliente_region]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      lineageId="Package\Carga dim_cliente\Dim_Cliente.Outputs[Salida de error de origen de OLE DB].Columns[cliente_region]"
+                      name="cliente_region" />
+                    <outputColumn
+                      refId="Package\Carga dim_cliente\Dim_Cliente.Outputs[Salida de error de origen de OLE DB].Columns[cliente_pais]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      lineageId="Package\Carga dim_cliente\Dim_Cliente.Outputs[Salida de error de origen de OLE DB].Columns[cliente_pais]"
+                      name="cliente_pais" />
+                    <outputColumn
+                      refId="Package\Carga dim_cliente\Dim_Cliente.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carga dim_cliente\Dim_Cliente.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carga dim_cliente\Dim_Cliente.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carga dim_cliente\Dim_Cliente.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carga dim_cliente\Filtrar Clientes Nuevos"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="División condicional;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;0"
+              description="Enruta filas de datos a diferentes salidas según el contenido de los datos. Se usan condiciones (expresiones de SSIS) para especificar las filas que se van a enrutar. Por ejemplo, se usa para separar los registros que deben limpiarse de los registros listos para ser cargados o para enrutar solamente un subconjunto de registros."
+              name="Filtrar Clientes Nuevos"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Carga dim_cliente\Filtrar Clientes Nuevos.Inputs[Entrada de división condicional]"
+                  description="Entrada en la transformación División condicional"
+                  name="Entrada de división condicional">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Carga dim_cliente\Filtrar Clientes Nuevos.Inputs[Entrada de división condicional].Columns[cliente_codigoBKey]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="5"
+                      cachedName="cliente_codigoBKey"
+                      lineageId="Package\Carga dim_cliente\Left Join StageCliente_DimCliente.Outputs[Salida de combinación de mezcla].Columns[cliente_codigoBKey]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Carga dim_cliente\Filtrar Clientes Nuevos.Outputs[Clientes_Nuevos]"
+                  description="Salida 1 de la transformación División condicional"
+                  errorOrTruncationOperation="Cálculo"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Clientes_Nuevos"
+                  synchronousInputId="Package\Carga dim_cliente\Filtrar Clientes Nuevos.Inputs[Entrada de división condicional]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Especifica la expresión. Esta versión de expresión usa identificadores de linaje en lugar de nombres de columna."
+                      name="Expression">[ISNULL](#{Package\Carga dim_cliente\Left Join StageCliente_DimCliente.Outputs[Salida de combinación de mezcla].Columns[cliente_codigoBKey]})</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Especifica la versión descriptiva de la expresión. Esta versión de expresión usa nombres de columna."
+                      expressionType="Notify"
+                      name="FriendlyExpression">ISNULL(cliente_codigoBKey)</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica la posición de la condición en la lista de condiciones que evalúa la transformación. El orden de evaluación es del menor al mayor valor."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Carga dim_cliente\Filtrar Clientes Nuevos.Outputs[Salida predeterminada de división condicional]"
+                  description="Salida predeterminada de la transformación División condicional"
+                  exclusionGroup="1"
+                  name="Salida predeterminada de división condicional"
+                  synchronousInputId="Package\Carga dim_cliente\Filtrar Clientes Nuevos.Inputs[Entrada de división condicional]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Carga dim_cliente\Filtrar Clientes Nuevos.Outputs[Salida de error de división condicional]"
+                  description="Salida de error de la transformación División condicional"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de división condicional"
+                  synchronousInputId="Package\Carga dim_cliente\Filtrar Clientes Nuevos.Inputs[Entrada de división condicional]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga dim_cliente\Filtrar Clientes Nuevos.Outputs[Salida de error de división condicional].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carga dim_cliente\Filtrar Clientes Nuevos.Outputs[Salida de error de división condicional].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carga dim_cliente\Filtrar Clientes Nuevos.Outputs[Salida de error de división condicional].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carga dim_cliente\Filtrar Clientes Nuevos.Outputs[Salida de error de división condicional].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carga dim_cliente\Left Join StageCliente_DimCliente"
+              componentClassID="Microsoft.MergeJoin"
+              contactInfo="Combinación de mezcla;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;1"
+              description="Combina dos flujos de datos ordenados en uno solo mediante la combinación FULL, LEFT o INNER. Se recomienda esta transformación cuando se pueden ordenar los flujos de datos en sus orígenes."
+              name="Left Join StageCliente_DimCliente"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el tipo de combinación que se debe realizar."
+                  name="JoinType"
+                  typeConverter="JoinType">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el número de columnas de la clave de ordenación."
+                  name="NumKeyColumns">1</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si los valores NULL se tratan como valores iguales."
+                  name="TreatNullsAsEqual">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Indica la cantidad máxima solicitada de búferes por entrada antes del bloqueo."
+                  name="MaxBuffersPerInput">5</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Carga dim_cliente\Left Join StageCliente_DimCliente.Inputs[Entrada izquierda de combinación de mezcla]"
+                  hasSideEffects="true"
+                  name="Entrada izquierda de combinación de mezcla">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Carga dim_cliente\Left Join StageCliente_DimCliente.Inputs[Entrada izquierda de combinación de mezcla].Columns[clienteid]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="5"
+                      cachedName="clienteid"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Carga dim_cliente\Ordenar Stage_Cliente.Outputs[Salida de ordenación].Columns[clienteid]" />
+                    <inputColumn
+                      refId="Package\Carga dim_cliente\Left Join StageCliente_DimCliente.Inputs[Entrada izquierda de combinación de mezcla].Columns[compania]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="40"
+                      cachedName="compania"
+                      lineageId="Package\Carga dim_cliente\Ordenar Stage_Cliente.Outputs[Salida de ordenación].Columns[compania]" />
+                    <inputColumn
+                      refId="Package\Carga dim_cliente\Left Join StageCliente_DimCliente.Inputs[Entrada izquierda de combinación de mezcla].Columns[ciudad]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="15"
+                      cachedName="ciudad"
+                      lineageId="Package\Carga dim_cliente\Ordenar Stage_Cliente.Outputs[Salida de ordenación].Columns[ciudad]" />
+                    <inputColumn
+                      refId="Package\Carga dim_cliente\Left Join StageCliente_DimCliente.Inputs[Entrada izquierda de combinación de mezcla].Columns[region]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="15"
+                      cachedName="region"
+                      lineageId="Package\Carga dim_cliente\Ordenar Stage_Cliente.Outputs[Salida de ordenación].Columns[region]" />
+                    <inputColumn
+                      refId="Package\Carga dim_cliente\Left Join StageCliente_DimCliente.Inputs[Entrada izquierda de combinación de mezcla].Columns[Copy of pais]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="15"
+                      cachedName="Copy of pais"
+                      lineageId="Package\Carga dim_cliente\Ordenar Stage_Cliente.Outputs[Salida de ordenación].Columns[Copy of pais]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Carga dim_cliente\Left Join StageCliente_DimCliente.Inputs[Entrada derecha de combinación de mezcla]"
+                  hasSideEffects="true"
+                  name="Entrada derecha de combinación de mezcla">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Carga dim_cliente\Left Join StageCliente_DimCliente.Inputs[Entrada derecha de combinación de mezcla].Columns[cliente_codigoBKey]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="5"
+                      cachedName="cliente_codigoBKey"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Carga dim_cliente\Ordenar Dim_Cliente.Outputs[Salida de ordenación].Columns[cliente_codigoBKey]" />
+                    <inputColumn
+                      refId="Package\Carga dim_cliente\Left Join StageCliente_DimCliente.Inputs[Entrada derecha de combinación de mezcla].Columns[cliente_compania]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="40"
+                      cachedName="cliente_compania"
+                      lineageId="Package\Carga dim_cliente\Ordenar Dim_Cliente.Outputs[Salida de ordenación].Columns[cliente_compania]" />
+                    <inputColumn
+                      refId="Package\Carga dim_cliente\Left Join StageCliente_DimCliente.Inputs[Entrada derecha de combinación de mezcla].Columns[cliente_ciudad]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="15"
+                      cachedName="cliente_ciudad"
+                      lineageId="Package\Carga dim_cliente\Ordenar Dim_Cliente.Outputs[Salida de ordenación].Columns[cliente_ciudad]" />
+                    <inputColumn
+                      refId="Package\Carga dim_cliente\Left Join StageCliente_DimCliente.Inputs[Entrada derecha de combinación de mezcla].Columns[cliente_region]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="25"
+                      cachedName="cliente_region"
+                      lineageId="Package\Carga dim_cliente\Ordenar Dim_Cliente.Outputs[Salida de ordenación].Columns[cliente_region]" />
+                    <inputColumn
+                      refId="Package\Carga dim_cliente\Left Join StageCliente_DimCliente.Inputs[Entrada derecha de combinación de mezcla].Columns[cliente_pais]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="15"
+                      cachedName="cliente_pais"
+                      lineageId="Package\Carga dim_cliente\Ordenar Dim_Cliente.Outputs[Salida de ordenación].Columns[cliente_pais]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Carga dim_cliente\Left Join StageCliente_DimCliente.Outputs[Salida de combinación de mezcla]"
+                  isSorted="true"
+                  name="Salida de combinación de mezcla">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga dim_cliente\Left Join StageCliente_DimCliente.Outputs[Salida de combinación de mezcla].Columns[clienteid]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      lineageId="Package\Carga dim_cliente\Left Join StageCliente_DimCliente.Outputs[Salida de combinación de mezcla].Columns[clienteid]"
+                      name="clienteid"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="La columna de entrada asociada a esta columna de salida"
+                          name="InputColumnID">#{Package\Carga dim_cliente\Left Join StageCliente_DimCliente.Inputs[Entrada izquierda de combinación de mezcla].Columns[clienteid]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga dim_cliente\Left Join StageCliente_DimCliente.Outputs[Salida de combinación de mezcla].Columns[compania]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      lineageId="Package\Carga dim_cliente\Left Join StageCliente_DimCliente.Outputs[Salida de combinación de mezcla].Columns[compania]"
+                      name="compania">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="La columna de entrada asociada a esta columna de salida"
+                          name="InputColumnID">#{Package\Carga dim_cliente\Left Join StageCliente_DimCliente.Inputs[Entrada izquierda de combinación de mezcla].Columns[compania]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga dim_cliente\Left Join StageCliente_DimCliente.Outputs[Salida de combinación de mezcla].Columns[ciudad]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      lineageId="Package\Carga dim_cliente\Left Join StageCliente_DimCliente.Outputs[Salida de combinación de mezcla].Columns[ciudad]"
+                      name="ciudad">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="La columna de entrada asociada a esta columna de salida"
+                          name="InputColumnID">#{Package\Carga dim_cliente\Left Join StageCliente_DimCliente.Inputs[Entrada izquierda de combinación de mezcla].Columns[ciudad]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga dim_cliente\Left Join StageCliente_DimCliente.Outputs[Salida de combinación de mezcla].Columns[region]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      lineageId="Package\Carga dim_cliente\Left Join StageCliente_DimCliente.Outputs[Salida de combinación de mezcla].Columns[region]"
+                      name="region">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="La columna de entrada asociada a esta columna de salida"
+                          name="InputColumnID">#{Package\Carga dim_cliente\Left Join StageCliente_DimCliente.Inputs[Entrada izquierda de combinación de mezcla].Columns[region]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga dim_cliente\Left Join StageCliente_DimCliente.Outputs[Salida de combinación de mezcla].Columns[cliente_codigoBKey]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      lineageId="Package\Carga dim_cliente\Left Join StageCliente_DimCliente.Outputs[Salida de combinación de mezcla].Columns[cliente_codigoBKey]"
+                      name="cliente_codigoBKey">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="La columna de entrada asociada a esta columna de salida"
+                          name="InputColumnID">#{Package\Carga dim_cliente\Left Join StageCliente_DimCliente.Inputs[Entrada derecha de combinación de mezcla].Columns[cliente_codigoBKey]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga dim_cliente\Left Join StageCliente_DimCliente.Outputs[Salida de combinación de mezcla].Columns[cliente_compania]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      lineageId="Package\Carga dim_cliente\Left Join StageCliente_DimCliente.Outputs[Salida de combinación de mezcla].Columns[cliente_compania]"
+                      name="cliente_compania">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="La columna de entrada asociada a esta columna de salida"
+                          name="InputColumnID">#{Package\Carga dim_cliente\Left Join StageCliente_DimCliente.Inputs[Entrada derecha de combinación de mezcla].Columns[cliente_compania]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga dim_cliente\Left Join StageCliente_DimCliente.Outputs[Salida de combinación de mezcla].Columns[cliente_ciudad]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      lineageId="Package\Carga dim_cliente\Left Join StageCliente_DimCliente.Outputs[Salida de combinación de mezcla].Columns[cliente_ciudad]"
+                      name="cliente_ciudad">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="La columna de entrada asociada a esta columna de salida"
+                          name="InputColumnID">#{Package\Carga dim_cliente\Left Join StageCliente_DimCliente.Inputs[Entrada derecha de combinación de mezcla].Columns[cliente_ciudad]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga dim_cliente\Left Join StageCliente_DimCliente.Outputs[Salida de combinación de mezcla].Columns[cliente_region]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      lineageId="Package\Carga dim_cliente\Left Join StageCliente_DimCliente.Outputs[Salida de combinación de mezcla].Columns[cliente_region]"
+                      name="cliente_region">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="La columna de entrada asociada a esta columna de salida"
+                          name="InputColumnID">#{Package\Carga dim_cliente\Left Join StageCliente_DimCliente.Inputs[Entrada derecha de combinación de mezcla].Columns[cliente_region]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga dim_cliente\Left Join StageCliente_DimCliente.Outputs[Salida de combinación de mezcla].Columns[cliente_pais]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      lineageId="Package\Carga dim_cliente\Left Join StageCliente_DimCliente.Outputs[Salida de combinación de mezcla].Columns[cliente_pais]"
+                      name="cliente_pais">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="La columna de entrada asociada a esta columna de salida"
+                          name="InputColumnID">#{Package\Carga dim_cliente\Left Join StageCliente_DimCliente.Inputs[Entrada derecha de combinación de mezcla].Columns[cliente_pais]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga dim_cliente\Left Join StageCliente_DimCliente.Outputs[Salida de combinación de mezcla].Columns[Copy of pais]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      lineageId="Package\Carga dim_cliente\Left Join StageCliente_DimCliente.Outputs[Salida de combinación de mezcla].Columns[Copy of pais]"
+                      name="Copy of pais">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="La columna de entrada asociada a esta columna de salida"
+                          name="InputColumnID">#{Package\Carga dim_cliente\Left Join StageCliente_DimCliente.Inputs[Entrada izquierda de combinación de mezcla].Columns[Copy of pais]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carga dim_cliente\Ordenar Dim_Cliente"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Ordenar;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;1"
+              description="Ordena los datos de entrada de manera ascendente o descendente cuando no es posible ordenarlos en su origen. Por ejemplo, se ordenan los datos de ventas por 'id. de cliente' antes de que se escriban en un archivo plano y se entreguen a otro departamento. Nota: no se recomienda realizar esta transformación para grandes flujos de datos."
+              name="Ordenar Dim_Cliente"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si la transformación Ordenar quita filas con valores de ordenación duplicados."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el número máximo de subprocesos que se deben usar para la ordenación."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Carga dim_cliente\Ordenar Dim_Cliente.Inputs[Entrada de ordenación]"
+                  name="Entrada de ordenación">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Carga dim_cliente\Ordenar Dim_Cliente.Inputs[Entrada de ordenación].Columns[cliente_Skey]"
+                      cachedDataType="i4"
+                      cachedName="cliente_Skey"
+                      lineageId="Package\Carga dim_cliente\Dim_Cliente.Outputs[Salida de origen de OLE DB].Columns[cliente_Skey]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica las opciones de comparación para datos de caracteres."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica el criterio de ordenación de la columna."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga dim_cliente\Ordenar Dim_Cliente.Inputs[Entrada de ordenación].Columns[cliente_codigoBKey]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="5"
+                      cachedName="cliente_codigoBKey"
+                      lineageId="Package\Carga dim_cliente\Dim_Cliente.Outputs[Salida de origen de OLE DB].Columns[cliente_codigoBKey]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica las opciones de comparación para datos de caracteres."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica el criterio de ordenación de la columna."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga dim_cliente\Ordenar Dim_Cliente.Inputs[Entrada de ordenación].Columns[cliente_compania]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="40"
+                      cachedName="cliente_compania"
+                      lineageId="Package\Carga dim_cliente\Dim_Cliente.Outputs[Salida de origen de OLE DB].Columns[cliente_compania]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica las opciones de comparación para datos de caracteres."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica el criterio de ordenación de la columna."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga dim_cliente\Ordenar Dim_Cliente.Inputs[Entrada de ordenación].Columns[cliente_ciudad]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="15"
+                      cachedName="cliente_ciudad"
+                      lineageId="Package\Carga dim_cliente\Dim_Cliente.Outputs[Salida de origen de OLE DB].Columns[cliente_ciudad]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica las opciones de comparación para datos de caracteres."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica el criterio de ordenación de la columna."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga dim_cliente\Ordenar Dim_Cliente.Inputs[Entrada de ordenación].Columns[cliente_region]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="25"
+                      cachedName="cliente_region"
+                      lineageId="Package\Carga dim_cliente\Dim_Cliente.Outputs[Salida de origen de OLE DB].Columns[cliente_region]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica las opciones de comparación para datos de caracteres."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica el criterio de ordenación de la columna."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga dim_cliente\Ordenar Dim_Cliente.Inputs[Entrada de ordenación].Columns[cliente_pais]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="15"
+                      cachedName="cliente_pais"
+                      lineageId="Package\Carga dim_cliente\Dim_Cliente.Outputs[Salida de origen de OLE DB].Columns[cliente_pais]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica las opciones de comparación para datos de caracteres."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica el criterio de ordenación de la columna."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Carga dim_cliente\Ordenar Dim_Cliente.Outputs[Salida de ordenación]"
+                  isSorted="true"
+                  name="Salida de ordenación">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga dim_cliente\Ordenar Dim_Cliente.Outputs[Salida de ordenación].Columns[cliente_Skey]"
+                      dataType="i4"
+                      lineageId="Package\Carga dim_cliente\Ordenar Dim_Cliente.Outputs[Salida de ordenación].Columns[cliente_Skey]"
+                      name="cliente_Skey">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Especifica el identificador de linaje de la columna de entrada que está asociada a esta columna de salida."
+                          name="SortColumnId">#{Package\Carga dim_cliente\Dim_Cliente.Outputs[Salida de origen de OLE DB].Columns[cliente_Skey]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga dim_cliente\Ordenar Dim_Cliente.Outputs[Salida de ordenación].Columns[cliente_codigoBKey]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      lineageId="Package\Carga dim_cliente\Ordenar Dim_Cliente.Outputs[Salida de ordenación].Columns[cliente_codigoBKey]"
+                      name="cliente_codigoBKey"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Especifica el identificador de linaje de la columna de entrada que está asociada a esta columna de salida."
+                          name="SortColumnId">#{Package\Carga dim_cliente\Dim_Cliente.Outputs[Salida de origen de OLE DB].Columns[cliente_codigoBKey]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga dim_cliente\Ordenar Dim_Cliente.Outputs[Salida de ordenación].Columns[cliente_compania]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      lineageId="Package\Carga dim_cliente\Ordenar Dim_Cliente.Outputs[Salida de ordenación].Columns[cliente_compania]"
+                      name="cliente_compania">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Especifica el identificador de linaje de la columna de entrada que está asociada a esta columna de salida."
+                          name="SortColumnId">#{Package\Carga dim_cliente\Dim_Cliente.Outputs[Salida de origen de OLE DB].Columns[cliente_compania]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga dim_cliente\Ordenar Dim_Cliente.Outputs[Salida de ordenación].Columns[cliente_ciudad]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      lineageId="Package\Carga dim_cliente\Ordenar Dim_Cliente.Outputs[Salida de ordenación].Columns[cliente_ciudad]"
+                      name="cliente_ciudad">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Especifica el identificador de linaje de la columna de entrada que está asociada a esta columna de salida."
+                          name="SortColumnId">#{Package\Carga dim_cliente\Dim_Cliente.Outputs[Salida de origen de OLE DB].Columns[cliente_ciudad]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga dim_cliente\Ordenar Dim_Cliente.Outputs[Salida de ordenación].Columns[cliente_region]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      lineageId="Package\Carga dim_cliente\Ordenar Dim_Cliente.Outputs[Salida de ordenación].Columns[cliente_region]"
+                      name="cliente_region">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Especifica el identificador de linaje de la columna de entrada que está asociada a esta columna de salida."
+                          name="SortColumnId">#{Package\Carga dim_cliente\Dim_Cliente.Outputs[Salida de origen de OLE DB].Columns[cliente_region]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga dim_cliente\Ordenar Dim_Cliente.Outputs[Salida de ordenación].Columns[cliente_pais]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      lineageId="Package\Carga dim_cliente\Ordenar Dim_Cliente.Outputs[Salida de ordenación].Columns[cliente_pais]"
+                      name="cliente_pais">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Especifica el identificador de linaje de la columna de entrada que está asociada a esta columna de salida."
+                          name="SortColumnId">#{Package\Carga dim_cliente\Dim_Cliente.Outputs[Salida de origen de OLE DB].Columns[cliente_pais]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carga dim_cliente\Ordenar Stage_Cliente"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Ordenar;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;1"
+              description="Ordena los datos de entrada de manera ascendente o descendente cuando no es posible ordenarlos en su origen. Por ejemplo, se ordenan los datos de ventas por 'id. de cliente' antes de que se escriban en un archivo plano y se entreguen a otro departamento. Nota: no se recomienda realizar esta transformación para grandes flujos de datos."
+              name="Ordenar Stage_Cliente"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si la transformación Ordenar quita filas con valores de ordenación duplicados."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el número máximo de subprocesos que se deben usar para la ordenación."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Carga dim_cliente\Ordenar Stage_Cliente.Inputs[Entrada de ordenación]"
+                  name="Entrada de ordenación">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Carga dim_cliente\Ordenar Stage_Cliente.Inputs[Entrada de ordenación].Columns[clienteid]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="5"
+                      cachedName="clienteid"
+                      lineageId="Package\Carga dim_cliente\Stage_Cliente.Outputs[Salida de origen de OLE DB].Columns[clienteid]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica las opciones de comparación para datos de caracteres."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica el criterio de ordenación de la columna."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga dim_cliente\Ordenar Stage_Cliente.Inputs[Entrada de ordenación].Columns[compania]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="40"
+                      cachedName="compania"
+                      lineageId="Package\Carga dim_cliente\Stage_Cliente.Outputs[Salida de origen de OLE DB].Columns[compania]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica las opciones de comparación para datos de caracteres."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica el criterio de ordenación de la columna."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga dim_cliente\Ordenar Stage_Cliente.Inputs[Entrada de ordenación].Columns[ciudad]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="15"
+                      cachedName="ciudad"
+                      lineageId="Package\Carga dim_cliente\Stage_Cliente.Outputs[Salida de origen de OLE DB].Columns[ciudad]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica las opciones de comparación para datos de caracteres."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica el criterio de ordenación de la columna."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga dim_cliente\Ordenar Stage_Cliente.Inputs[Entrada de ordenación].Columns[region]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="15"
+                      cachedName="region"
+                      lineageId="Package\Carga dim_cliente\Stage_Cliente.Outputs[Salida de origen de OLE DB].Columns[region]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica las opciones de comparación para datos de caracteres."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica el criterio de ordenación de la columna."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga dim_cliente\Ordenar Stage_Cliente.Inputs[Entrada de ordenación].Columns[pais]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="pais"
+                      lineageId="Package\Carga dim_cliente\Stage_Cliente.Outputs[Salida de origen de OLE DB].Columns[pais]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica las opciones de comparación para datos de caracteres."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica el criterio de ordenación de la columna."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga dim_cliente\Ordenar Stage_Cliente.Inputs[Entrada de ordenación].Columns[Copy of pais]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="15"
+                      cachedName="Copy of pais"
+                      lineageId="Package\Carga dim_cliente\Conversión de datos 1.Outputs[Salida de conversión de datos].Columns[Copy of pais]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica las opciones de comparación para datos de caracteres."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica el criterio de ordenación de la columna."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Carga dim_cliente\Ordenar Stage_Cliente.Outputs[Salida de ordenación]"
+                  isSorted="true"
+                  name="Salida de ordenación">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga dim_cliente\Ordenar Stage_Cliente.Outputs[Salida de ordenación].Columns[clienteid]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      lineageId="Package\Carga dim_cliente\Ordenar Stage_Cliente.Outputs[Salida de ordenación].Columns[clienteid]"
+                      name="clienteid"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Especifica el identificador de linaje de la columna de entrada que está asociada a esta columna de salida."
+                          name="SortColumnId">#{Package\Carga dim_cliente\Stage_Cliente.Outputs[Salida de origen de OLE DB].Columns[clienteid]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga dim_cliente\Ordenar Stage_Cliente.Outputs[Salida de ordenación].Columns[compania]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      lineageId="Package\Carga dim_cliente\Ordenar Stage_Cliente.Outputs[Salida de ordenación].Columns[compania]"
+                      name="compania">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Especifica el identificador de linaje de la columna de entrada que está asociada a esta columna de salida."
+                          name="SortColumnId">#{Package\Carga dim_cliente\Stage_Cliente.Outputs[Salida de origen de OLE DB].Columns[compania]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga dim_cliente\Ordenar Stage_Cliente.Outputs[Salida de ordenación].Columns[ciudad]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      lineageId="Package\Carga dim_cliente\Ordenar Stage_Cliente.Outputs[Salida de ordenación].Columns[ciudad]"
+                      name="ciudad">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Especifica el identificador de linaje de la columna de entrada que está asociada a esta columna de salida."
+                          name="SortColumnId">#{Package\Carga dim_cliente\Stage_Cliente.Outputs[Salida de origen de OLE DB].Columns[ciudad]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga dim_cliente\Ordenar Stage_Cliente.Outputs[Salida de ordenación].Columns[region]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      lineageId="Package\Carga dim_cliente\Ordenar Stage_Cliente.Outputs[Salida de ordenación].Columns[region]"
+                      name="region">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Especifica el identificador de linaje de la columna de entrada que está asociada a esta columna de salida."
+                          name="SortColumnId">#{Package\Carga dim_cliente\Stage_Cliente.Outputs[Salida de origen de OLE DB].Columns[region]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga dim_cliente\Ordenar Stage_Cliente.Outputs[Salida de ordenación].Columns[pais]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\Carga dim_cliente\Ordenar Stage_Cliente.Outputs[Salida de ordenación].Columns[pais]"
+                      name="pais">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Especifica el identificador de linaje de la columna de entrada que está asociada a esta columna de salida."
+                          name="SortColumnId">#{Package\Carga dim_cliente\Stage_Cliente.Outputs[Salida de origen de OLE DB].Columns[pais]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga dim_cliente\Ordenar Stage_Cliente.Outputs[Salida de ordenación].Columns[Copy of pais]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      lineageId="Package\Carga dim_cliente\Ordenar Stage_Cliente.Outputs[Salida de ordenación].Columns[Copy of pais]"
+                      name="Copy of pais">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Especifica el identificador de linaje de la columna de entrada que está asociada a esta columna de salida."
+                          name="SortColumnId">#{Package\Carga dim_cliente\Conversión de datos 1.Outputs[Salida de conversión de datos].Columns[Copy of pais]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carga dim_cliente\Stage_Cliente"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="Origen de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;7"
+              description="Origen de OLE DB"
+              name="Stage_Cliente"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT SC.clienteid, SC.compania, SC.ciudad, SC.region, SC.pais
+FROM stage_northwind.dbo.Clientes AS SC
+LEFT JOIN datamart_northwind.dbo.dim_Cliente AS DC
+ON SC.clienteid = DC.cliente_codigoBKey</property>
+                <property
+                  dataType="System.String"
+                  description="Variable que contiene el comando SQL para ejecutar."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="Asignaciones entre los parámetros del comando SQL y las variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Carga dim_cliente\Stage_Cliente.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[BRANDON.stage_northwind]"
+                  connectionManagerRefId="Package.ConnectionManagers[BRANDON.stage_northwind]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Carga dim_cliente\Stage_Cliente.Outputs[Salida de origen de OLE DB]"
+                  name="Salida de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga dim_cliente\Stage_Cliente.Outputs[Salida de origen de OLE DB].Columns[clienteid]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga dim_cliente\Stage_Cliente.Outputs[Salida de origen de OLE DB].ExternalColumns[clienteid]"
+                      length="5"
+                      lineageId="Package\Carga dim_cliente\Stage_Cliente.Outputs[Salida de origen de OLE DB].Columns[clienteid]"
+                      name="clienteid"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga dim_cliente\Stage_Cliente.Outputs[Salida de origen de OLE DB].Columns[compania]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga dim_cliente\Stage_Cliente.Outputs[Salida de origen de OLE DB].ExternalColumns[compania]"
+                      length="40"
+                      lineageId="Package\Carga dim_cliente\Stage_Cliente.Outputs[Salida de origen de OLE DB].Columns[compania]"
+                      name="compania"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga dim_cliente\Stage_Cliente.Outputs[Salida de origen de OLE DB].Columns[ciudad]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga dim_cliente\Stage_Cliente.Outputs[Salida de origen de OLE DB].ExternalColumns[ciudad]"
+                      length="15"
+                      lineageId="Package\Carga dim_cliente\Stage_Cliente.Outputs[Salida de origen de OLE DB].Columns[ciudad]"
+                      name="ciudad"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga dim_cliente\Stage_Cliente.Outputs[Salida de origen de OLE DB].Columns[region]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga dim_cliente\Stage_Cliente.Outputs[Salida de origen de OLE DB].ExternalColumns[region]"
+                      length="15"
+                      lineageId="Package\Carga dim_cliente\Stage_Cliente.Outputs[Salida de origen de OLE DB].Columns[region]"
+                      name="region"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga dim_cliente\Stage_Cliente.Outputs[Salida de origen de OLE DB].Columns[pais]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga dim_cliente\Stage_Cliente.Outputs[Salida de origen de OLE DB].ExternalColumns[pais]"
+                      length="15"
+                      lineageId="Package\Carga dim_cliente\Stage_Cliente.Outputs[Salida de origen de OLE DB].Columns[pais]"
+                      name="pais"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Carga dim_cliente\Stage_Cliente.Outputs[Salida de origen de OLE DB].ExternalColumns[clienteid]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      name="clienteid" />
+                    <externalMetadataColumn
+                      refId="Package\Carga dim_cliente\Stage_Cliente.Outputs[Salida de origen de OLE DB].ExternalColumns[compania]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      name="compania" />
+                    <externalMetadataColumn
+                      refId="Package\Carga dim_cliente\Stage_Cliente.Outputs[Salida de origen de OLE DB].ExternalColumns[ciudad]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      name="ciudad" />
+                    <externalMetadataColumn
+                      refId="Package\Carga dim_cliente\Stage_Cliente.Outputs[Salida de origen de OLE DB].ExternalColumns[region]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      name="region" />
+                    <externalMetadataColumn
+                      refId="Package\Carga dim_cliente\Stage_Cliente.Outputs[Salida de origen de OLE DB].ExternalColumns[pais]"
+                      dataType="wstr"
+                      length="15"
+                      name="pais" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Carga dim_cliente\Stage_Cliente.Outputs[Salida de error de origen de OLE DB]"
+                  isErrorOut="true"
+                  name="Salida de error de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga dim_cliente\Stage_Cliente.Outputs[Salida de error de origen de OLE DB].Columns[clienteid]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      lineageId="Package\Carga dim_cliente\Stage_Cliente.Outputs[Salida de error de origen de OLE DB].Columns[clienteid]"
+                      name="clienteid" />
+                    <outputColumn
+                      refId="Package\Carga dim_cliente\Stage_Cliente.Outputs[Salida de error de origen de OLE DB].Columns[compania]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      lineageId="Package\Carga dim_cliente\Stage_Cliente.Outputs[Salida de error de origen de OLE DB].Columns[compania]"
+                      name="compania" />
+                    <outputColumn
+                      refId="Package\Carga dim_cliente\Stage_Cliente.Outputs[Salida de error de origen de OLE DB].Columns[ciudad]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      lineageId="Package\Carga dim_cliente\Stage_Cliente.Outputs[Salida de error de origen de OLE DB].Columns[ciudad]"
+                      name="ciudad" />
+                    <outputColumn
+                      refId="Package\Carga dim_cliente\Stage_Cliente.Outputs[Salida de error de origen de OLE DB].Columns[region]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      lineageId="Package\Carga dim_cliente\Stage_Cliente.Outputs[Salida de error de origen de OLE DB].Columns[region]"
+                      name="region" />
+                    <outputColumn
+                      refId="Package\Carga dim_cliente\Stage_Cliente.Outputs[Salida de error de origen de OLE DB].Columns[pais]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\Carga dim_cliente\Stage_Cliente.Outputs[Salida de error de origen de OLE DB].Columns[pais]"
+                      name="pais" />
+                    <outputColumn
+                      refId="Package\Carga dim_cliente\Stage_Cliente.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carga dim_cliente\Stage_Cliente.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carga dim_cliente\Stage_Cliente.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carga dim_cliente\Stage_Cliente.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carga dim_cliente\Tabla Dim_Cliente"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destino de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;4"
+              description="Destino de OLE DB"
+              name="Tabla Dim_Cliente"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">[dbo].[dim_Cliente]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si los valores proporcionados para columnas de identidad se van a copiar al destino. Si es False, los valores de las columnas de identidad se generan automáticamente en el destino. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si las columnas que contienen NULL tendrán NULL insertado en el destino. Si es False, las columnas que contienen NULL tendrán sus valores predeterminados insertados en el destino. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica opciones para usar con la carga rápida. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica cuándo se emiten confirmaciones durante la inserción de datos. El valor 0 especifica que se emitirá una confirmación al final de la inserción de datos. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Carga dim_cliente\Tabla Dim_Cliente.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[BRANDON.datamart_northwind 1]"
+                  connectionManagerRefId="Package.ConnectionManagers[BRANDON.datamart_northwind 1]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Carga dim_cliente\Tabla Dim_Cliente.Inputs[Entrada de destino de OLE DB]"
+                  errorOrTruncationOperation="Insertar"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrada de destino de OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Carga dim_cliente\Tabla Dim_Cliente.Inputs[Entrada de destino de OLE DB].Columns[clienteid]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="5"
+                      cachedName="clienteid"
+                      cachedSortKeyPosition="1"
+                      externalMetadataColumnId="Package\Carga dim_cliente\Tabla Dim_Cliente.Inputs[Entrada de destino de OLE DB].ExternalColumns[cliente_codigoBKey]"
+                      lineageId="Package\Carga dim_cliente\Left Join StageCliente_DimCliente.Outputs[Salida de combinación de mezcla].Columns[clienteid]" />
+                    <inputColumn
+                      refId="Package\Carga dim_cliente\Tabla Dim_Cliente.Inputs[Entrada de destino de OLE DB].Columns[compania]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="40"
+                      cachedName="compania"
+                      externalMetadataColumnId="Package\Carga dim_cliente\Tabla Dim_Cliente.Inputs[Entrada de destino de OLE DB].ExternalColumns[cliente_compania]"
+                      lineageId="Package\Carga dim_cliente\Left Join StageCliente_DimCliente.Outputs[Salida de combinación de mezcla].Columns[compania]" />
+                    <inputColumn
+                      refId="Package\Carga dim_cliente\Tabla Dim_Cliente.Inputs[Entrada de destino de OLE DB].Columns[ciudad]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="15"
+                      cachedName="ciudad"
+                      externalMetadataColumnId="Package\Carga dim_cliente\Tabla Dim_Cliente.Inputs[Entrada de destino de OLE DB].ExternalColumns[cliente_ciudad]"
+                      lineageId="Package\Carga dim_cliente\Left Join StageCliente_DimCliente.Outputs[Salida de combinación de mezcla].Columns[ciudad]" />
+                    <inputColumn
+                      refId="Package\Carga dim_cliente\Tabla Dim_Cliente.Inputs[Entrada de destino de OLE DB].Columns[region]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="15"
+                      cachedName="region"
+                      externalMetadataColumnId="Package\Carga dim_cliente\Tabla Dim_Cliente.Inputs[Entrada de destino de OLE DB].ExternalColumns[cliente_region]"
+                      lineageId="Package\Carga dim_cliente\Left Join StageCliente_DimCliente.Outputs[Salida de combinación de mezcla].Columns[region]" />
+                    <inputColumn
+                      refId="Package\Carga dim_cliente\Tabla Dim_Cliente.Inputs[Entrada de destino de OLE DB].Columns[Copy of pais]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="15"
+                      cachedName="Copy of pais"
+                      externalMetadataColumnId="Package\Carga dim_cliente\Tabla Dim_Cliente.Inputs[Entrada de destino de OLE DB].ExternalColumns[cliente_pais]"
+                      lineageId="Package\Carga dim_cliente\Left Join StageCliente_DimCliente.Outputs[Salida de combinación de mezcla].Columns[Copy of pais]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Carga dim_cliente\Tabla Dim_Cliente.Inputs[Entrada de destino de OLE DB].ExternalColumns[cliente_Skey]"
+                      dataType="i4"
+                      name="cliente_Skey" />
+                    <externalMetadataColumn
+                      refId="Package\Carga dim_cliente\Tabla Dim_Cliente.Inputs[Entrada de destino de OLE DB].ExternalColumns[cliente_codigoBKey]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      name="cliente_codigoBKey" />
+                    <externalMetadataColumn
+                      refId="Package\Carga dim_cliente\Tabla Dim_Cliente.Inputs[Entrada de destino de OLE DB].ExternalColumns[cliente_compania]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      name="cliente_compania" />
+                    <externalMetadataColumn
+                      refId="Package\Carga dim_cliente\Tabla Dim_Cliente.Inputs[Entrada de destino de OLE DB].ExternalColumns[cliente_ciudad]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      name="cliente_ciudad" />
+                    <externalMetadataColumn
+                      refId="Package\Carga dim_cliente\Tabla Dim_Cliente.Inputs[Entrada de destino de OLE DB].ExternalColumns[cliente_region]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      name="cliente_region" />
+                    <externalMetadataColumn
+                      refId="Package\Carga dim_cliente\Tabla Dim_Cliente.Inputs[Entrada de destino de OLE DB].ExternalColumns[cliente_pais]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      name="cliente_pais" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Carga dim_cliente\Tabla Dim_Cliente.Outputs[Salida de error de destino de OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de destino de OLE DB"
+                  synchronousInputId="Package\Carga dim_cliente\Tabla Dim_Cliente.Inputs[Entrada de destino de OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga dim_cliente\Tabla Dim_Cliente.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carga dim_cliente\Tabla Dim_Cliente.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carga dim_cliente\Tabla Dim_Cliente.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carga dim_cliente\Tabla Dim_Cliente.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Carga dim_cliente.Paths[Clientes_Nuevos]"
+              endId="Package\Carga dim_cliente\Tabla Dim_Cliente.Inputs[Entrada de destino de OLE DB]"
+              name="Clientes_Nuevos"
+              startId="Package\Carga dim_cliente\Filtrar Clientes Nuevos.Outputs[Clientes_Nuevos]" />
+            <path
+              refId="Package\Carga dim_cliente.Paths[Salida de combinación de mezcla]"
+              endId="Package\Carga dim_cliente\Filtrar Clientes Nuevos.Inputs[Entrada de división condicional]"
+              name="Salida de combinación de mezcla"
+              startId="Package\Carga dim_cliente\Left Join StageCliente_DimCliente.Outputs[Salida de combinación de mezcla]" />
+            <path
+              refId="Package\Carga dim_cliente.Paths[Salida de conversión de datos]"
+              endId="Package\Carga dim_cliente\Ordenar Stage_Cliente.Inputs[Entrada de ordenación]"
+              name="Salida de conversión de datos"
+              startId="Package\Carga dim_cliente\Conversión de datos 1.Outputs[Salida de conversión de datos]" />
+            <path
+              refId="Package\Carga dim_cliente.Paths[Salida de ordenación]"
+              endId="Package\Carga dim_cliente\Left Join StageCliente_DimCliente.Inputs[Entrada izquierda de combinación de mezcla]"
+              name="Salida de ordenación"
+              startId="Package\Carga dim_cliente\Ordenar Stage_Cliente.Outputs[Salida de ordenación]" />
+            <path
+              refId="Package\Carga dim_cliente.Paths[Salida de ordenación1]"
+              endId="Package\Carga dim_cliente\Left Join StageCliente_DimCliente.Inputs[Entrada derecha de combinación de mezcla]"
+              name="Salida de ordenación"
+              startId="Package\Carga dim_cliente\Ordenar Dim_Cliente.Outputs[Salida de ordenación]" />
+            <path
+              refId="Package\Carga dim_cliente.Paths[Salida de origen de OLE DB]"
+              endId="Package\Carga dim_cliente\Ordenar Dim_Cliente.Inputs[Entrada de ordenación]"
+              name="Salida de origen de OLE DB"
+              startId="Package\Carga dim_cliente\Dim_Cliente.Outputs[Salida de origen de OLE DB]" />
+            <path
+              refId="Package\Carga dim_cliente.Paths[Salida de origen de OLE DB1]"
+              endId="Package\Carga dim_cliente\Conversión de datos 1.Inputs[Entrada de conversión de datos]"
+              name="Salida de origen de OLE DB"
+              startId="Package\Carga dim_cliente\Stage_Cliente.Outputs[Salida de origen de OLE DB]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--Esta sección CDATA contiene la información de diseño del paquete. Esta sección incluye información como, por ejemplo, las coordenadas (x,y), el ancho y el alto.-->
+<!--Si edita manualmente esta sección y comete un error, puede eliminarlo. -->
+<!--El paquete podrá cargarse normalmente, pero se perderá la información de diseño anterior y el diseñador reorganizará los elementos automáticamente en la superficie de diseño.-->
+<Objects
+  Version="8">
+  <!--Cada uno de los nodos siguientes contiene propiedades que no afectan al comportamiento en tiempo de ejecución.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="162.4,41.6"
+          Id="Package\Carga dim_cliente"
+          TopLeft="329.166648681794,74.5333328150378" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Carga dim_cliente">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="144,41.6"
+          Id="Package\Carga dim_cliente\Stage_Cliente"
+          TopLeft="239.166653599177,24.2666664979193" />
+        <NodeLayout
+          Size="135.2,41.6"
+          Id="Package\Carga dim_cliente\Dim_Cliente"
+          TopLeft="489.16663993978,26.8666664798392" />
+        <NodeLayout
+          Size="184.8,41.6"
+          Id="Package\Carga dim_cliente\Ordenar Stage_Cliente"
+          TopLeft="228.333320857751,209.733331874874" />
+        <NodeLayout
+          Size="176,41.6"
+          Id="Package\Carga dim_cliente\Ordenar Dim_Cliente"
+          TopLeft="472.499974183739,130.866665756636" />
+        <EdgeLayout
+          Id="Package\Carga dim_cliente.Paths[Salida de origen de OLE DB]"
+          TopLeft="558.63330706176,68.4666664798392">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,62.3999992767969"
+              Start="0,0"
+              End="0,54.8999992767969">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,54.8999992767969" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="236.8,41.6"
+          Id="Package\Carga dim_cliente\Left Join StageCliente_DimCliente"
+          TopLeft="348.33331430124,288.599997993112" />
+        <NodeLayout
+          Size="183.2,41.6"
+          Id="Package\Carga dim_cliente\Filtrar Clientes Nuevos"
+          TopLeft="372.499979647498,390.866663948629" />
+        <EdgeLayout
+          Id="Package\Carga dim_cliente.Paths[Salida de combinación de mezcla]"
+          TopLeft="465.416646974369,330.199997993112">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60.666665955517"
+              Start="0,0"
+              End="0,53.166665955517">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,53.166665955517" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="164,41.6"
+          Id="Package\Carga dim_cliente\Tabla Dim_Cliente"
+          TopLeft="379.999979237716,528.066664057109" />
+        <NodeLayout
+          Size="182.4,41.6"
+          Id="Package\Carga dim_cliente\Conversión de datos 1"
+          TopLeft="201.666655648086,118.399999276797" />
+        <EdgeLayout
+          Id="Package\Carga dim_cliente.Paths[Salida de origen de OLE DB1]"
+          TopLeft="311.166653599177,65.8666664979193">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-18.2999979510905,52.5333327788777"
+              Start="0,0"
+              End="-18.2999979510905,45.0333327788777">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.2666663894389" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,22.2666663894389"
+                    Point2="0,26.2666663894389"
+                    Point3="-4,26.2666663894389" />
+                  <mssgle:LineSegment
+                    End="-14.2999979510905,26.2666663894389" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-14.2999979510905,26.2666663894389"
+                    Point2="-18.2999979510905,26.2666663894389"
+                    Point3="-18.2999979510905,30.2666663894389" />
+                  <mssgle:LineSegment
+                    End="-18.2999979510905,45.0333327788777" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Carga dim_cliente.Paths[Salida de conversión de datos]"
+          TopLeft="292.866655648086,159.999999276797">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="27.8666652096643,49.7333325980769"
+              Start="0,0"
+              End="27.8666652096643,42.2333325980769">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.8666662990385" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.8666662990385"
+                    Point2="0,24.8666662990385"
+                    Point3="4,24.8666662990385" />
+                  <mssgle:LineSegment
+                    End="23.8666652096643,24.8666662990385" />
+                  <mssgle:CubicBezierSegment
+                    Point1="23.8666652096643,24.8666662990385"
+                    Point2="27.8666652096643,24.8666662990385"
+                    Point3="27.8666652096643,28.8666662990385" />
+                  <mssgle:LineSegment
+                    End="27.8666652096643,42.2333325980769" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Carga dim_cliente.Paths[Clientes_Nuevos]"
+          TopLeft="463.049979442607,432.466663948629">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,95.6000001084802"
+              Start="0,0"
+              End="0,88.1000001084802">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,88.1000001084802" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-45.57123046875,36.0500000542401,91.1424609375,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Carga dim_cliente.Paths[Salida de ordenación]"
+          TopLeft="320.733320857751,251.333331874874">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="145.999993443489,37.2666661182377"
+              Start="0,0"
+              End="145.999993443489,29.7666661182377">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,14.6333330591189" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,14.6333330591189"
+                    Point2="0,18.6333330591189"
+                    Point3="4,18.6333330591189" />
+                  <mssgle:LineSegment
+                    End="141.999993443489,18.6333330591189" />
+                  <mssgle:CubicBezierSegment
+                    Point1="141.999993443489,18.6333330591189"
+                    Point2="145.999993443489,18.6333330591189"
+                    Point3="145.999993443489,22.6333330591189" />
+                  <mssgle:LineSegment
+                    End="145.999993443489,29.7666661182377" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Carga dim_cliente.Paths[Salida de ordenación1]"
+          TopLeft="560.499974183739,172.466665756636">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-55.6333265491661,116.133332236476"
+              Start="0,0"
+              End="-55.6333265491661,108.633332236476">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,65.2123483395908" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,65.2123483395908"
+                    Point2="0,69.2123483395908"
+                    Point3="-4,69.2123483395908" />
+                  <mssgle:LineSegment
+                    End="-51.6333265491661,69.2123483395908" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-51.6333265491661,69.2123483395908"
+                    Point2="-55.6333265491661,69.2123483395908"
+                    Point3="-55.6333265491661,73.2123483395908" />
+                  <mssgle:LineSegment
+                    End="-55.6333265491661,108.633332236476" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Carga dim_cliente\Stage_Cliente">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Carga dim_cliente\Dim_Cliente">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Carga dim_cliente\Tabla Dim_Cliente">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
